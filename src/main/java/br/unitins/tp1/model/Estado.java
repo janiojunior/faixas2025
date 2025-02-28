@@ -1,13 +1,23 @@
 package br.unitins.tp1.model;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-public class Estado extends PanacheEntity {
+public class Estado {
 
-    public String nome;
-    public String sigla;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(length = 60, nullable = false)
+    private String nome;
+
+    @Column(length = 2, nullable = false)
+    private String sigla;
 
     public String getNome() {
         return nome;
@@ -23,6 +33,14 @@ public class Estado extends PanacheEntity {
 
     public void setSigla(String sigla) {
         this.sigla = sigla;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

@@ -3,6 +3,8 @@ package br.unitins.tp1.resource;
 import java.util.List;
 
 import br.unitins.tp1.model.Estado;
+import br.unitins.tp1.repository.EstadoRepository;
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -16,10 +18,21 @@ import jakarta.ws.rs.core.MediaType;
 @Path("estados")
 public class EstadoResource {
 
+    @Inject
+    protected EstadoRepository estadoRepository;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Estado> buscarTodos() {
-        return Estado.findAll().list();
+    public List<Estado> buscarTodos() { 
+        return estadoRepository.findAll().list();
+    }
+
+
+    @GET
+    @Path("/sigla/{sigla}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Estado buscarPorSigla(String sigla) { 
+        return estadoRepository.findBySigla(sigla);
     }
 
     @POST
@@ -33,7 +46,7 @@ public class EstadoResource {
         novoEstado.setSigla(estado.getSigla());
 
         // realizando inclusao
-        novoEstado.persist();
+        estadoRepository.persist(novoEstado);
 
         return novoEstado;
     }
@@ -44,7 +57,7 @@ public class EstadoResource {
     @Transactional
     public void alterar(Long id, Estado estado) {
 
-        Estado edicaoEstado = Estado.findById(id);
+        Estado edicaoEstado = estadoRepository.findById(id);
 
         edicaoEstado.setNome(estado.getNome());
         edicaoEstado.setSigla(estado.getSigla());
@@ -55,7 +68,7 @@ public class EstadoResource {
     @Path("/{id}")
     @Transactional
     public void apagar(Long id) {
-        Estado.deleteById(id);
+        estadoRepository.deleteById(id);
     }
 
 }
