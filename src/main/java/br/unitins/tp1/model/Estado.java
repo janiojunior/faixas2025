@@ -19,6 +19,8 @@ public class Estado {
     @Column(length = 2, nullable = false)
     private String sigla;
 
+    private Regiao regiao;
+
     public String getNome() {
         return nome;
     }
@@ -42,5 +44,15 @@ public class Estado {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Regiao getRegiao() {
+        return regiao;
+    }
+
+    public void setRegiao(Regiao regiao) {
+        this.regiao = regiao;
+    }
+
+    
 
 }
