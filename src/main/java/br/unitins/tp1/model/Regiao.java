@@ -1,5 +1,6 @@
 package br.unitins.tp1.model;
 
+import com.arjuna.ats.arjuna.common.recoveryPropertyManager;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
@@ -26,7 +27,9 @@ public enum Regiao {
         return NOME;
     }
 
-     public static Regiao valueOf(int id) {
+     public static Regiao valueOf(Integer id) {
+        if (id == null)
+            return null;
         for (Regiao r : Regiao.values()) {
             if (r.getId() == id)
                 return r;

@@ -4,7 +4,6 @@ import java.util.List;
 
 import br.unitins.tp1.dto.EstadoDTO;
 import br.unitins.tp1.model.Estado;
-import br.unitins.tp1.repository.EstadoRepository;
 import br.unitins.tp1.service.EstadoService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -43,8 +42,8 @@ public class EstadoResource {
 
     @PUT
     @Path("/{id}")
-    public void alterar(Long id, Estado estado) {
-        service.update(id, estado);
+    public void alterar(Long id, EstadoDTO dto) {
+        service.update(id, dto);
     }
 
     @DELETE
