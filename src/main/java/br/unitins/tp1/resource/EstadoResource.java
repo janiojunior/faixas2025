@@ -1,8 +1,10 @@
 package br.unitins.tp1.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.unitins.tp1.dto.EstadoDTO;
+import br.unitins.tp1.dto.EstadoResponseDTO;
 import br.unitins.tp1.model.Estado;
 import br.unitins.tp1.service.EstadoService;
 import jakarta.inject.Inject;
@@ -25,18 +27,18 @@ public class EstadoResource {
     EstadoService service;
 
     @GET
-    public List<Estado> buscarTodos() { 
+    public List<EstadoResponseDTO> buscarTodos() { 
         return service.findAll();
     }
 
     @GET
     @Path("/sigla/{sigla}")
-    public Estado buscarPorSigla(String sigla) { 
+    public EstadoResponseDTO buscarPorSigla(String sigla) { 
         return service.findBySigla(sigla);
     }
 
     @POST
-    public Estado incluir(EstadoDTO dto) {
+    public EstadoResponseDTO incluir(EstadoDTO dto) {
         return service.create(dto);
     }
 

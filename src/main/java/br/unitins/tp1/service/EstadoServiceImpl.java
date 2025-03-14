@@ -3,6 +3,7 @@ package br.unitins.tp1.service;
 import java.util.List;
 
 import br.unitins.tp1.dto.EstadoDTO;
+import br.unitins.tp1.dto.EstadoResponseDTO;
 import br.unitins.tp1.model.Estado;
 import br.unitins.tp1.model.Regiao;
 import br.unitins.tp1.repository.EstadoRepository;
@@ -18,7 +19,7 @@ public class EstadoServiceImpl implements EstadoService {
 
     @Override
     @Transactional
-    public Estado create(EstadoDTO estado) {
+    public EstadoResponseDTO create(EstadoDTO estado) {
         Estado novoEstado = new Estado();
         novoEstado.setNome(estado.nome());
         novoEstado.setSigla(estado.sigla());
@@ -28,7 +29,7 @@ public class EstadoServiceImpl implements EstadoService {
         // realizando inclusao
         estadoRepository.persist(novoEstado);
 
-        return novoEstado;
+        return EstadoResponseDTO.valueOf(novoEstado);
     }
 
     @Override
@@ -48,18 +49,18 @@ public class EstadoServiceImpl implements EstadoService {
     }
 
     @Override
-    public Estado findById(long id) {
-        return estadoRepository.findById(id);
+    public EstadoResponseDTO findById(long id) {
+        return EstadoResponseDTO.valueOf(estadoRepository.findById(id));
     }
 
     @Override
-    public Estado findBySigla(String sigla) {
-        return estadoRepository.findBySigla(sigla);
+    public EstadoResponseDTO findBySigla(String sigla) {
+        return EstadoResponseDTO.valueOf(estadoRepository.findBySigla(sigla));
     }
 
     @Override
-    public List<Estado> findAll() {
-        return estadoRepository.findAll().list();
+    public List<EstadoResponseDTO> findAll() {
+        return estadoRepository.findAll().stream().map(e -> EstadoResponseDTO.valueOf(e)).toList();
     }
     
 }

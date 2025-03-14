@@ -3,15 +3,15 @@ package br.unitins.tp1.service;
 import java.util.List;
 
 import br.unitins.tp1.dto.EstadoDTO;
-import br.unitins.tp1.model.Estado;
+import br.unitins.tp1.dto.EstadoResponseDTO;
 
 public interface EstadoService {
 
-    Estado create(EstadoDTO estado);
+    EstadoResponseDTO create(EstadoDTO estado);
     void update(long id, EstadoDTO estado);
     void delete(long id);
-    Estado findById(long id);
-    Estado findBySigla(String sigla);
-    List<Estado> findAll();
+    EstadoResponseDTO findById(long id);
+    EstadoResponseDTO findBySigla(String sigla);
+    List<EstadoResponseDTO> findAll();
     
 }
