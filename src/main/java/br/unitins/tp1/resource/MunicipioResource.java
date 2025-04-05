@@ -1,9 +1,6 @@
 package br.unitins.tp1.resource;
 
-import java.util.List;
-
 import br.unitins.tp1.dto.MunicipioDTO;
-import br.unitins.tp1.dto.MunicipioResponseDTO;
 import br.unitins.tp1.service.MunicipioService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -15,6 +12,8 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 @Path("municipios")
 @Produces(MediaType.APPLICATION_JSON)
@@ -25,38 +24,40 @@ public class MunicipioResource {
     MunicipioService service;
 
     @GET
-    public List<MunicipioResponseDTO> buscarTodos() { 
-        return service.findAll();
+    public Response buscarTodos() { 
+        return Response.status(Status.OK).entity(service.findAll()).build();
     }
 
     @GET
     @Path("/estado/{id}")
-    public List<MunicipioResponseDTO>  buscarPorEstado(Long id) { 
-        return service.findByEstado(id);
+    public Response buscarPorEstado(Long id) { 
+        return Response.status(Status.OK).entity(service.findByEstado(id)).build();
     }
 
     @GET
     @Path("/nome/{nome}")
-    public List<MunicipioResponseDTO>  buscarPorNome(String nome) { 
-        return service.findByNome(nome);
+    public Response  buscarPorNome(String nome) { 
+        return Response.status(Status.OK).entity(service.findByNome(nome)).build();
     }
 
     @POST
-    public MunicipioResponseDTO incluir(MunicipioDTO dto) {
-        return service.create(dto);
+    public Response incluir(MunicipioDTO dto) {
+        return Response.status(Status.CREATED).entity(service.create(dto)).build();
     }
 
     @PUT
     @Path("/{id}")
-    public void alterar(Long id, MunicipioDTO dto) {
+    public Response alterar(Long id, MunicipioDTO dto) {
         service.update(id, dto);
+        return Response.noContent().build();
     }
 
     @DELETE
     @Path("/{id}")
     @Transactional
-    public void apagar(Long id) {
+    public Response apagar(Long id) {
         service.delete(id);
+        return Response.noContent().build();
     }
 
 }
