@@ -13,3 +13,9 @@ insert into estado (nome, sigla, regiao) values ('Rio de Janeiro', 'RJ',4);
 
 insert into municipio (nome, id_estado) values ('Palmas', 1);
 insert into municipio (nome, id_estado) values ('Araguaina', 1);
+
+insert into pessoa (nome) values ('Leandra Leal');
+insert into pessoa (nome) values ('Carlos Henrique');
+
+insert into pessoafisica (id, cpf) values (1, '11111111111');
+insert into pessoafisica (id, cpf) values (2, '22222222222');
