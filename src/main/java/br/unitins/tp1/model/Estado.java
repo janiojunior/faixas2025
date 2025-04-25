@@ -15,7 +15,7 @@ public class Estado extends DefaultEntity {
     private Regiao regiao;
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
@@ -38,6 +38,5 @@ public class Estado extends DefaultEntity {
         this.regiao = regiao;
     }
 
-    
 
 }
