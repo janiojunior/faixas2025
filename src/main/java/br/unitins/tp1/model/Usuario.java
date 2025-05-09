@@ -2,19 +2,21 @@ package br.unitins.tp1.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
 public class Usuario extends DefaultEntity {
 
-    @Column(length = 30)
+    @Column(length = 30, unique = true)
     private String username;
-    @Column(length = 30)
+    @Column(length = 88)
     private String senha;
 
     private Perfil perfil;
 
     @OneToOne
+    @JoinColumn(name = "id_pessoafisica", unique = true)
     private PessoaFisica pessoaFisica;
 
     public String getUsername() {

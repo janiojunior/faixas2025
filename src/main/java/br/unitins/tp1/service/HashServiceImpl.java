@@ -37,13 +37,11 @@ public class HashServiceImpl implements HashService {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String ... args) {
         HashServiceImpl hash = new HashServiceImpl();
         try {
-            System.out.println(hash.getHashSenha("1234"));
-            System.out.println(hash.getHashSenha("1234"));
-            System.out.println(hash.getHashSenha("Leandra"));
-            System.out.println(hash.getHashSenha("leandra"));
+            System.out.println(hash.getHashSenha("123456"));
+
         } catch (Exception e) {
             e.printStackTrace();
         }

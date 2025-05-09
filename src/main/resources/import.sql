@@ -19,3 +19,16 @@ insert into pessoa (nome) values ('Carlos Henrique');
 
 insert into pessoafisica (id, cpf) values (1, '11111111111');
 insert into pessoafisica (id, cpf) values (2, '22222222222');
+
+insert into usuario(username, senha, perfil, id_pessoafisica) 
+    values (
+        'leandra', 
+        'SiM9w9cv/QHp+fZSykTmN52bUoj++hlYrZoet0hxU8eajwrdo6L5hmWoOm96rYeFQ1YyMKBKLuRE05aC5FKL/Q==',
+        1,
+        1);
+insert into usuario(username, senha, perfil, id_pessoafisica) 
+    values (
+        'carlos', 
+        'SiM9w9cv/QHp+fZSykTmN52bUoj++hlYrZoet0hxU8eajwrdo6L5hmWoOm96rYeFQ1YyMKBKLuRE05aC5FKL/Q==',
+        2,
+        2);
