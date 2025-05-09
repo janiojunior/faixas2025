@@ -9,7 +9,7 @@ import javax.crypto.spec.PBEKeySpec;
 
 public class HashServiceImpl implements HashService {
 
-    private String salt = "@#1237Z";
+    private String salt = "@#1237Zt";
     private Integer iterationCount = 403;
     private Integer keyLength = 512;
 
