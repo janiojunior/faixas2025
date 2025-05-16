@@ -28,9 +28,6 @@ public class EstadoResource {
     @Inject
     EstadoService service;
 
-    @Inject
-    JwtServiceImpl jwt;
-
     @GET
     public Response buscarTodos() { 
         return Response.ok().entity(service.findAll()).build();
