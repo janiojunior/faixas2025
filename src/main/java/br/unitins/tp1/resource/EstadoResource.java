@@ -5,6 +5,7 @@ import java.util.List;
 import br.unitins.tp1.dto.EstadoDTO;
 import br.unitins.tp1.dto.EstadoResponseDTO;
 import br.unitins.tp1.service.EstadoService;
+import br.unitins.tp1.service.JwtServiceImpl;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -26,6 +27,9 @@ public class EstadoResource {
 
     @Inject
     EstadoService service;
+
+    @Inject
+    JwtServiceImpl jwt;
 
     @GET
     public Response buscarTodos() { 
