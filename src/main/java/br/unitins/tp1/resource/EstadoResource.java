@@ -6,6 +6,7 @@ import br.unitins.tp1.dto.EstadoDTO;
 import br.unitins.tp1.dto.EstadoResponseDTO;
 import br.unitins.tp1.service.EstadoService;
 import br.unitins.tp1.service.JwtServiceImpl;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -29,11 +30,13 @@ public class EstadoResource {
     EstadoService service;
 
     @GET
+    @RolesAllowed("Adm")
     public Response buscarTodos() { 
         return Response.ok().entity(service.findAll()).build();
     }
 
     @GET
+    @RolesAllowed("User")
     @Path("/sigla/{sigla}")
     public Response buscarPorSigla(String sigla) { 
         return Response.ok().entity(service.findBySigla(sigla)).build();
