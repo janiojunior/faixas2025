@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import br.unitins.tp1.model.Pedido;
-import br.unitins.tp1.model.Regiao;
 
 public record PedidoResponseDTO(
     Long id,
@@ -13,13 +12,16 @@ public record PedidoResponseDTO(
     // pagamento
     // status pedido
     Double totalPedido,
-    List<ItemPedidoResponseDTO> lista,
-    Regiao regiao) {
+    List<ItemPedidoResponseDTO> lista) {
 
-    // public static PedidoResponseDTO valueOf(Pedido pedido) {
-    //     if (pedido == null)
-    //         return null;
-    //     return new PedidoResponseDTO(pedido.getId(), pedido.getNome(), pedido.getSigla(), pedido.getRegiao());
-    // }
+    public static PedidoResponseDTO valueOf(Pedido pedido) {
+        return new PedidoResponseDTO(
+            pedido.getId(),
+            pedido.getDataHora(),
+            pedido.getTotalPedido(),
+            pedido.getItens().stream().map(i -> ItemPedidoResponseDTO.valueOf(i)).toList()  
+        );
+      
+    }
     
 }
