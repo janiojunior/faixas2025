@@ -32,3 +32,9 @@ insert into usuario(username, senha, perfil, id_pessoafisica)
         'SiM9w9cv/QHp+fZSykTmN52bUoj++hlYrZoet0hxU8eajwrdo6L5hmWoOm96rYeFQ1YyMKBKLuRE05aC5FKL/Q==',
         2,
         2);
+
+insert into faixa (nome, descricao, preco, estoque) values ('Faixa Branca', 'Faixa Branca', 100.00, 10);
+insert into faixa (nome, descricao, preco, estoque) values ('Faixa Azul', 'Faixa Azul', 110.00, 10);
+insert into faixa (nome, descricao, preco, estoque) values ('Faixa Roxa', 'Faixa Roxa', 120.00, 10);
+insert into faixa (nome, descricao, preco, estoque) values ('Faixa Marom', 'Faixa Marom', 130.00, 10);
+insert into faixa (nome, descricao, preco, estoque) values ('Faixa Preta', 'Faixa Preta', 150.00, 10);

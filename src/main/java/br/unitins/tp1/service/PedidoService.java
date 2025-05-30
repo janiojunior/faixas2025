@@ -9,12 +9,6 @@ public interface PedidoService {
 
     List<PedidoResponseDTO> findByUsername(String username);
     PedidoResponseDTO findById(long idPedido, String username); 
-    
-    
-    PedidoResponseDTO create(PedidoDTO pedido);
-    void update(long id, PedidoDTO pedido);
-    void delete(long id);
-    PedidoResponseDTO findBySigla(String sigla);
-    List<PedidoResponseDTO> findAll();
+    PedidoResponseDTO create(PedidoDTO pedido, String username);
     
 }
