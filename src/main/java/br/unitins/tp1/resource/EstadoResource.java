@@ -2,6 +2,8 @@ package br.unitins.tp1.resource;
 
 import java.util.List;
 
+import org.jboss.logging.Logger;
+
 import br.unitins.tp1.dto.EstadoDTO;
 import br.unitins.tp1.dto.EstadoResponseDTO;
 import br.unitins.tp1.service.EstadoService;
@@ -26,12 +28,15 @@ import jakarta.ws.rs.core.Response.Status;
 @Consumes(MediaType.APPLICATION_JSON)
 public class EstadoResource {
 
+    private static final Logger LOG = Logger.getLogger(EstadoResource.class);
+
     @Inject
     EstadoService service;
 
     @GET
     @RolesAllowed("Adm")
     public Response buscarTodos() { 
+        LOG.info("Entrou no método buscarTodos");
         return Response.ok().entity(service.findAll()).build();
     }
 
@@ -39,7 +44,14 @@ public class EstadoResource {
     @RolesAllowed("User")
     @Path("/sigla/{sigla}")
     public Response buscarPorSigla(String sigla) { 
-        return Response.ok().entity(service.findBySigla(sigla)).build();
+        LOG.info("Entrou no método buscarPorSigla");
+        LOG.debug("O parametro informado foi: " + sigla);
+
+        EstadoResponseDTO dto = service.findBySigla(sigla);
+
+        LOG.debug("Os dados de retorno são: nome=" +dto.nome() + " sigla="+ dto.sigla());
+
+        return Response.ok().entity(dto).build();
     }
 
     @POST
